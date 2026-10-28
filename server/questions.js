@@ -1,203 +1,289 @@
 // ===== EDIT QUESTIONS HERE =====
 // answer = index (0-3) of the correct option in `options`.
-// memorize = pattern shown alone for `seconds` BEFORE the question appears (then hidden for good).
+// memorize = pattern shown alone for `seconds` BEFORE the question appears (then hidden).
 // Each question gets a 60s answer timer, 10 points. Order + option order are shuffled per team.
 export const ROUNDS = {
-  1: { name: 'Memory Protocol', tagline: 'Lock it in. Recall it under pressure.', count: 10 },
-  2: { name: 'Logic Lab', tagline: 'Trace the code. Beat the clock.', count: 10 },
-  3: { name: 'Core Memory', tagline: 'Remember it, then reason with it.', count: 10 },
+  1: { name: 'Memory Protocol', tagline: 'Burn it into RAM. Recall under pressure.', count: 10 },
+  2: { name: 'Logic Lab',       tagline: 'Trace the code. Beat the clock.',          count: 10 },
+  3: { name: 'Core Memory',     tagline: 'Remember it. Then reason with it.',        count: 10 },
 };
 
 export const QUESTIONS = {
-  // ─────────────────────────────── ROUND 1: Memory Protocol ───────────────────────────────
-  // Show a snippet, hide it, then ask about it.
+
+  // ══════════════════════════════════════════════════════════════════════════
+  //  ROUND 1 — Memory Protocol
+  //  Memorise a technical snapshot, then answer about it.
+  // ══════════════════════════════════════════════════════════════════════════
   1: [
     {
       id: 'm1',
-      memorize: { title: 'CONFIG FILE', seconds: 6, lines: ["user  = 'neo'", 'level = 4', "key   = 'A9'", 'port  = 8080'] },
-      text: 'What value was assigned to key?',
-      options: ["'A9'", "'9A'", "'B9'", "'A7'"], answer: 0,
+      memorize: {
+        title: 'HEX → DECIMAL TABLE', seconds: 7,
+        lines: ['0xAF → 175', '0xBE → 190', '0xCD → 205', '0xDE → 222'],
+      },
+      text: 'What is the decimal value of 0xBE?',
+      options: ['175', '190', '205', '222'], answer: 1,
     },
     {
       id: 'm2',
-      memorize: { title: 'DATA STRUCTURES', seconds: 6, lines: ['1. Stack', '2. Queue', '3. Tree', '4. Graph', '5. Heap'] },
-      text: 'Which structure was listed 3rd?',
-      options: ['Stack', 'Queue', 'Tree', 'Heap'], answer: 2,
+      memorize: {
+        title: 'HTTP STATUS CODES', seconds: 7,
+        lines: ['404 → Not Found', '403 → Forbidden', '500 → Internal Server Error', '301 → Moved Permanently'],
+      },
+      text: 'Which HTTP status code means Forbidden?',
+      options: ['404', '403', '500', '301'], answer: 1,
     },
     {
       id: 'm3',
-      memorize: { title: 'KEY → VALUE', seconds: 6, lines: ['A → 42', 'B → 17', 'C → 93', 'D → 58'] },
-      text: 'What value was paired with C?',
-      options: ['17', '93', '58', '39'], answer: 1,
+      memorize: {
+        title: 'CPU REGISTERS', seconds: 7,
+        lines: ['AX = 0x00FF', 'BX = 0x1A2B', 'CX = 0x3C4D', 'DX = 0xFF00'],
+      },
+      text: 'What value is stored in the CX register?',
+      options: ['0x1A2B', '0x3C4D', '0xFF00', '0x00FF'], answer: 1,
     },
     {
       id: 'm4',
-      memorize: { title: 'ANIMAL CODES', seconds: 6, lines: ['Cat  → 001', 'Dog  → 010', 'Fox  → 011', 'Owl  → 100'] },
-      text: 'What code was assigned to Fox?',
-      options: ['010', '011', '100', '001'], answer: 1,
+      memorize: {
+        title: 'WELL-KNOWN PORT NUMBERS', seconds: 7,
+        lines: ['HTTP → 80   HTTPS → 443', 'FTP  → 21   SSH   → 22', 'SMTP → 25   DNS   → 53'],
+      },
+      text: 'What port does SMTP use?',
+      options: ['25', '53', '21', '80'], answer: 0,
     },
     {
       id: 'm5',
-      memorize: { title: 'NUMBER LIST', seconds: 6, lines: ['7  14  21  28  35  42'] },
-      text: 'What is the 5th number in the sequence you saw?',
-      options: ['28', '35', '42', '21'], answer: 1,
+      memorize: {
+        title: 'OSI MODEL', seconds: 7,
+        lines: ['7-Application  6-Presentation  5-Session', '4-Transport    3-Network       2-Data Link', '1-Physical'],
+      },
+      text: 'Which layer number is the Session layer?',
+      options: ['4', '5', '6', '3'], answer: 1,
     },
     {
       id: 'm6',
-      memorize: { title: 'COLOURS', seconds: 6, lines: ['1. Red', '2. Green', '3. Blue', '4. Yellow', '5. Purple'] },
-      text: 'Which colour was at position 4?',
-      options: ['Blue', 'Yellow', 'Purple', 'Green'], answer: 1,
+      memorize: {
+        title: 'WORST-CASE TIME COMPLEXITIES', seconds: 7,
+        lines: ['Bubble Sort   → O(n²)', 'Merge Sort    → O(n log n)', 'Quick Sort    → O(n²)', 'Insertion Sort→ O(n²)'],
+      },
+      text: 'Which algorithm has O(n log n) worst-case complexity?',
+      options: ['Bubble Sort', 'Quick Sort', 'Merge Sort', 'Insertion Sort'], answer: 2,
     },
     {
       id: 'm7',
-      memorize: { title: 'GRID', seconds: 6, lines: ['Row 1: A B C', 'Row 2: D E F', 'Row 3: G H I'] },
-      text: 'Which letter was in Row 2, position 2?',
-      options: ['D', 'E', 'F', 'B'], answer: 1,
+      memorize: {
+        title: 'SUBNET INFO', seconds: 7,
+        lines: ['IP:        10.0.0.45', 'Mask:      255.255.255.192', 'Gateway:   10.0.0.1', 'Broadcast: 10.0.0.63'],
+      },
+      text: 'What was the Broadcast address?',
+      options: ['10.0.0.1', '10.0.0.63', '10.0.0.255', '10.0.0.45'], answer: 1,
     },
     {
       id: 'm8',
-      memorize: { title: 'SERVER INFO', seconds: 6, lines: ['host = "api.techflix.io"', 'port = 443', 'timeout = 30', 'retries = 3'] },
-      text: 'What was the value of timeout?',
-      options: ['443', '30', '3', '60'], answer: 1,
+      memorize: {
+        title: 'XNOR TRUTH TABLE', seconds: 7,
+        lines: ['A  B │ A⊕B  A⊙B', '0  0 │  0    1', '0  1 │  1    0', '1  0 │  1    0', '1  1 │  0    1'],
+      },
+      text: 'What is A⊙B (XNOR) when A = 0, B = 1?',
+      options: ['0', '1', 'X', 'Undefined'], answer: 0,
     },
     {
       id: 'm9',
-      memorize: { title: 'PLANET ORDER', seconds: 6, lines: ['1-Mercury  2-Venus  3-Earth', '4-Mars     5-Jupiter'] },
-      text: 'Which planet is at position 4?',
-      options: ['Earth', 'Mars', 'Jupiter', 'Venus'], answer: 1,
+      memorize: {
+        title: 'BUBBLE SORT PASSES', seconds: 7,
+        lines: ['Initial:      [8, 3, 1, 7, 5]', 'After pass 1: [3, 1, 7, 5, 8]', 'After pass 2: [1, 3, 5, 7, 8]'],
+      },
+      text: 'What element is at index 2 after pass 1?',
+      options: ['1', '7', '5', '3'], answer: 1,
     },
     {
       id: 'm10',
-      memorize: { title: 'SCORES', seconds: 6, lines: ['Alice: 87', 'Bob:   93', 'Carol: 76', 'Dave:  91'] },
-      text: 'Who had the highest score?',
-      options: ['Alice', 'Bob', 'Carol', 'Dave'], answer: 1,
+      memorize: {
+        title: 'DECIMAL → HEX', seconds: 7,
+        lines: [' 50 → 0x32', ' 75 → 0x4B', '100 → 0x64', '255 → 0xFF'],
+      },
+      text: 'What is the hexadecimal representation of 75?',
+      options: ['0x32', '0x4B', '0x64', '0x4A'], answer: 1,
     },
   ],
 
-  // ─────────────────────────────── ROUND 2: Logic Lab ───────────────────────────────
-  // Code tracing, binary, bitwise, data structures, recursion — easy to medium.
+  // ══════════════════════════════════════════════════════════════════════════
+  //  ROUND 2 — Logic Lab
+  //  Code tracing, bit-ops, complexity, Python gotchas — engineering level.
+  // ══════════════════════════════════════════════════════════════════════════
   2: [
     {
       id: 'l1',
-      text: 'What does this program print?',
-      code: 'x = 5\nfor i in range(1, 4):\n    x += i\nprint(x)',
-      options: ['8', '11', '14', '9'], answer: 1,
+      text: 'What does this print? (Python closure trap)',
+      code: 'funcs = []\nfor i in range(4):\n    funcs.append(lambda: i * i)\nprint(funcs[1]())',
+      // After loop i=3, all lambdas capture the SAME i → 3*3 = 9
+      options: ['1', '4', '9', '16'], answer: 2,
     },
     {
       id: 'l2',
-      text: 'What is the output? (bitwise AND)',
-      code: 'print(6 & 3)',
-      options: ['0', '2', '3', '7'], answer: 1,
+      text: 'What does this print? (mutable default argument)',
+      code: 'def f(x, lst=[]):\n    lst.append(x)\n    return lst\nf(1)\nf(2)\nprint(f(3))',
+      // Default list persists across calls → [1, 2, 3]
+      options: ['[3]', '[1, 2, 3]', '[2, 3]', 'Error'], answer: 1,
     },
     {
       id: 'l3',
-      text: 'What is the decimal value of the binary number 101101?',
-      options: ['43', '45', '47', '53'], answer: 1,
+      text: 'What does this print? (XOR swap)',
+      code: 'a, b = 13, 9\na ^= b\nb ^= a\na ^= b\nprint(a, b)',
+      // XOR swap swaps the values → 9 13
+      options: ['13 9', '9 13', '4 9', '13 4'], answer: 1,
     },
     {
       id: 'l4',
-      text: 'An empty stack gets: push 4, push 7, push 9, pop, push 2, pop, pop. What is on top now?',
-      options: ['4', '7', '9', '2'], answer: 0,
+      text: 'What does this print? (clear lowest set bit)',
+      code: 'x = 0b10110100   # 180\nprint(x & (x - 1))',
+      // 180 = 10110100, 179 = 10110011, AND = 10110000 = 176
+      options: ['176', '172', '164', '180'], answer: 0,
     },
     {
       id: 'l5',
-      text: 'What does this program print?',
-      code: 'def f(n):\n    if n <= 1:\n        return 1\n    return n * f(n - 1)\n\nprint(f(4) - f(3))',
-      options: ['12', '18', '24', '6'], answer: 1,
+      text: 'What does this print?',
+      code: 'def g(n):\n    if n <= 0: return 0\n    return g(n-3) + g(n-2) + 1\nprint(g(5))',
+      // g(2)=1, g(3)=2, g(5)=g(2)+g(3)+1=4
+      options: ['3', '4', '5', '6'], answer: 1,
     },
     {
       id: 'l6',
-      text: 'What is the output of this snippet?',
-      code: 'a = [1, 2, 3, 4, 5]\nprint(a[1:4])',
-      options: ['[1, 2, 3]', '[2, 3, 4]', '[2, 3, 4, 5]', '[1, 2, 3, 4]'], answer: 1,
+      text: 'What does this print?',
+      code: 'def gen():\n    for i in range(1, 6):\n        if i % 2 == 0:\n            yield i ** 2\ng = gen()\nprint(next(g) + next(g))',
+      // yields 4 (i=2), 16 (i=4) → 4+16 = 20
+      options: ['4', '20', '36', '16'], answer: 1,
     },
     {
       id: 'l7',
-      text: 'What does this print?',
-      code: 'x = 10\ny = 3\nprint(x // y, x % y)',
-      options: ['3 1', '3 2', '4 1', '3 3'], answer: 0,
+      text: 'What is the time complexity of this function?',
+      code: 'def mystery(n):\n    i = n\n    while i > 1:\n        i = i // 2',
+      options: ['O(n)', 'O(log n)', 'O(n log n)', 'O(√n)'], answer: 1,
     },
     {
       id: 'l8',
-      text: 'How many times does "hello" get printed?',
-      code: 'for i in range(2):\n    for j in range(3):\n        print("hello")',
-      options: ['2', '3', '5', '6'], answer: 3,
+      text: 'What does this print? (class variable shared across instances)',
+      code: 'class A:\n    x = 0\n    def __init__(self): A.x += 1\na1 = A(); a2 = A(); a3 = A()\nprint(A.x)',
+      // Each instantiation increments class var → 3
+      options: ['0', '1', '2', '3'], answer: 3,
     },
     {
       id: 'l9',
-      text: 'What is 0b1010 | 0b0110 in decimal?',
-      options: ['12', '14', '10', '16'], answer: 1,
+      text: 'What does this print? (slice with step)',
+      code: 'a = list(range(10))\nb = a[2:7:2]\nprint(b)',
+      // a[2:7:2] → indices 2,4,6 → [2, 4, 6]
+      options: ['[2, 4, 6, 8]', '[2, 4, 6]', '[3, 5, 7]', '[2, 5]'], answer: 1,
     },
     {
       id: 'l10',
-      text: 'What does this code return?',
-      code: 'def mystery(lst):\n    return sum(lst) / len(lst)\n\nprint(mystery([10, 20, 30]))',
-      options: ['15.0', '20.0', '60.0', '30.0'], answer: 1,
+      text: 'What is the average-case time complexity of searching for a key in a balanced Binary Search Tree with n nodes?',
+      options: ['O(n)', 'O(log n)', 'O(n log n)', 'O(1)'], answer: 1,
     },
   ],
 
-  // ─────────────────────────────── ROUND 3: Core Memory ───────────────────────────────
-  // Show snippet → hide it → ask a reasoning question about it.
+  // ══════════════════════════════════════════════════════════════════════════
+  //  ROUND 3 — Core Memory
+  //  See complex code/data, then reason about it after it disappears.
+  // ══════════════════════════════════════════════════════════════════════════
   3: [
     {
       id: 'c1',
-      memorize: { title: 'VARIABLES', seconds: 6, lines: ['a = 4', 'b = 6', 'c = a + b'] },
-      text: 'What is c * 2?',
-      options: ['10', '12', '20', '24'], answer: 2,
-    },
-    {
-      id: 'c2',
-      memorize: { title: 'PATTERN', seconds: 6, lines: ['2 → 6 → 18 → 54 → ?'] },
-      text: 'What number comes next in the pattern you saw?',
-      options: ['108', '162', '148', '72'], answer: 1,
-    },
-    {
-      id: 'c3',
-      memorize: { title: 'ARRAY', seconds: 6, lines: ['[3, 8, 1, 9, 4]'] },
-      text: 'What is the sum of the largest and smallest numbers in the array you saw?',
-      options: ['11', '12', '10', '13'], answer: 2,
-    },
-    {
-      id: 'c4',
-      memorize: { title: 'STACK LOG', seconds: 6, lines: ['push 5', 'push 2', 'pop', 'push 8', 'push 1'] },
-      text: 'After those operations, what does the stack hold (bottom → top)?',
-      options: ['5, 8, 1', '5, 2, 8, 1', '1, 8, 5', '5, 8, 2'], answer: 0,
-    },
-    {
-      id: 'c5',
-      memorize: { title: 'FUNCTION', seconds: 6, lines: ['def f(x):', '    return x * 2 + 1'] },
-      text: 'What is f(f(3))?',
-      options: ['7', '13', '15', '17'], answer: 2,
-    },
-    {
-      id: 'c6',
-      memorize: { title: 'LOOP TRACE', seconds: 6, lines: ['total = 0', 'for i in [1,2,3,4]:', '    total += i'] },
-      text: 'What is the value of total after the loop?',
+      memorize: {
+        title: 'RECURSIVE FUNCTION', seconds: 8,
+        lines: ['def dp(n, k):', '    if k==0 or k==n: return 1', '    return dp(n-1,k-1) + dp(n-1,k)'],
+      },
+      text: 'What is dp(5, 2)?  (This is C(n,k) — binomial coefficient)',
+      // C(5,2) = 10
       options: ['6', '8', '10', '12'], answer: 2,
     },
     {
+      id: 'c2',
+      memorize: {
+        title: 'DIRECTED GRAPH', seconds: 8,
+        lines: ['A → [B, C]', 'B → [D]', 'C → [D, E]', 'D → [F]', 'E → [F]'],
+      },
+      text: 'How many distinct paths exist from A to F?',
+      // A→B→D→F, A→C→D→F, A→C→E→F → 3
+      options: ['2', '3', '4', '5'], answer: 1,
+    },
+    {
+      id: 'c3',
+      memorize: {
+        title: 'NESTED LOOP', seconds: 8,
+        lines: ['n = 6', 'total = 0', 'for i in range(1, n):', '    for j in range(i, n):', '        total += 1'],
+      },
+      text: 'What is the value of total after execution?',
+      // 5+4+3+2+1 = 15
+      options: ['10', '12', '15', '20'], answer: 2,
+    },
+    {
+      id: 'c4',
+      memorize: {
+        title: 'QUEUE OPERATIONS', seconds: 8,
+        lines: ['enqueue 3, enqueue 7, enqueue 1', 'dequeue', 'enqueue 9, enqueue 4', 'dequeue, dequeue'],
+      },
+      text: 'What element is at the FRONT of the queue after all operations?',
+      // [3,7,1] → deq→[7,1] → enq9→[7,1,9] → enq4→[7,1,9,4] → deq→[1,9,4] → deq→[9,4] → front=9
+      options: ['1', '4', '7', '9'], answer: 3,
+    },
+    {
+      id: 'c5',
+      memorize: {
+        title: 'EUCLIDEAN GCD', seconds: 8,
+        lines: ['def f(x, y):', '    while y:', '        x, y = y, x % y', '    return x'],
+      },
+      text: 'What does f(48, 18) return?',
+      // GCD(48,18)=GCD(18,12)=GCD(12,6)=GCD(6,0)=6
+      options: ['3', '6', '9', '12'], answer: 1,
+    },
+    {
+      id: 'c6',
+      memorize: {
+        title: 'BITWISE XOR', seconds: 8,
+        lines: ['a = 0b11001010  # 202', 'b = 0b10110101  # 181', 'c = a ^ b', 'd = c & 0xFF'],
+      },
+      text: 'What is the decimal value of d?',
+      // 11001010 ^ 10110101 = 01111111 = 127; 127 & 0xFF = 127
+      options: ['55', '75', '127', '255'], answer: 2,
+    },
+    {
       id: 'c7',
-      memorize: { title: 'DICT', seconds: 6, lines: ['d = {"x": 5, "y": 8, "z": 3}'] },
-      text: 'What is d["y"] - d["z"]?',
-      options: ['3', '5', '8', '11'], answer: 1,
+      memorize: {
+        title: 'LINKED LIST', seconds: 8,
+        lines: ['n1=Node(10); n2=Node(20); n3=Node(30)', 'n1.next = n2', 'n2.next = n3'],
+      },
+      text: 'What is the value of n1.next.next.v?',
+      options: ['10', '20', '30', 'Error'], answer: 2,
     },
     {
       id: 'c8',
-      memorize: { title: 'SEQUENCE', seconds: 6, lines: ['1, 1, 2, 3, 5, 8, 13, ?'] },
-      text: 'What is the next number in the sequence?',
-      options: ['18', '20', '21', '25'], answer: 2,
+      memorize: {
+        title: 'BINARY SEARCH', seconds: 8,
+        lines: ['arr=[2,5,8,12,16,23,38,56,72,91]', 'target=23', 'lo=0, hi=9'],
+      },
+      text: 'How many comparisons does binary search make to find 23?',
+      // mid=4→16<23→lo=5; mid=7→56>23→hi=6; mid=5→23 found. 3 comparisons.
+      options: ['2', '3', '4', '5'], answer: 1,
     },
     {
       id: 'c9',
-      memorize: { title: 'BINARY OPS', seconds: 6, lines: ['a = 0b1100', 'b = 0b1010', 'c = a & b'] },
-      text: 'What is the decimal value of c?',
-      options: ['6', '8', '10', '14'], answer: 1,
+      memorize: {
+        title: 'BINARY SEARCH TREE', seconds: 8,
+        lines: ['       10', '      /  \\', '     5    15', '    / \\     \\', '   3   7    20'],
+      },
+      text: 'What is the sum of all nodes on the path from root to node 7?',
+      // 10 → 5 → 7 = 22
+      options: ['15', '17', '22', '25'], answer: 2,
     },
     {
       id: 'c10',
-      memorize: { title: 'SCORE TABLE', seconds: 6, lines: ['R1: 30   R2: 50   R3: 20', 'Bonus: 15'] },
-      text: 'What is the total score including the bonus?',
-      options: ['100', '105', '110', '115'], answer: 3,
+      memorize: {
+        title: 'BITWISE EXPRESSION', seconds: 8,
+        lines: ['x = 0xFF & (0xAB | 0x54)', 'y = x >> 4', 'z = y & 0x0F'],
+      },
+      text: 'What is the decimal value of z?',
+      // 0xAB|0x54=0xFF; 0xFF&0xFF=255; 255>>4=15; 15&0x0F=15
+      options: ['15', '31', '63', '127'], answer: 0,
     },
   ],
 };
