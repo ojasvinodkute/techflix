@@ -30,7 +30,7 @@ export default function Register() {
           <div className="mt-3 text-slate-400">ACCESS CODE</div><div className="text-3xl tracking-[.3em] text-violet-300">{done.accessCode}</div>
         </div>
         <div className="flex flex-wrap justify-center gap-3">
-          <button className="btn btn-ghost" onClick={async () => { try { await navigator.clipboard.writeText(text); setCopied(true); } catch { /* ignore */ } }}>{copied ? 'Copied ✔' : 'Copy details'}</button>
+          <button className="btn btn-ghost" onClick={async () => { try { await navigator.clipboard.writeText(done.accessCode); setCopied(true); } catch { /* ignore */ } }}>{copied ? 'Copied ✔' : 'Copy details'}</button>
           <Link to="/login" className="btn btn-primary">Go to login</Link>
         </div>
         <p className="text-sm text-slate-500">Log in with your registered email + this access code.</p>

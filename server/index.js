@@ -8,7 +8,7 @@ import { initStore, db, persist, wipe } from './store.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PORT = process.env.PORT || 3000;
-const ANSWER_MS = 30000; // per-question answer timer
+const ANSWER_MS = 60000; // per-question answer timer
 const GRACE_MS = 1500; // network latency allowance
 const FEEDBACK_MS = 1500; // pause between questions (client shows right/wrong)
 const POINTS = 10;
